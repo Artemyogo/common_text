@@ -33,3 +33,4 @@
 
 #Visual Studio
 *.opendb
+*.VC.opendb
