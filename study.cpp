@@ -1,5 +1,6 @@
 #include "factors.h"
 #include "neurons.h"
+#include "study.h"
 
 using namespace std;
 
@@ -13,7 +14,7 @@ void input(vector<string>& st, string open) {
 		st.push_back(str);
 }
 
-int main() {
+void study() {
 	srand(time(NULL));
 	ofstream fout;
 	ifstream fin;
