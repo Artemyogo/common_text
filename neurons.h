@@ -9,7 +9,8 @@
 
 using namespace std;
 
-const int input_size = 64;
+const int size1 = 257;
+const int input_size = size1;
 
 struct neuron {
 	double value;
@@ -17,11 +18,6 @@ struct neuron {
 	void act() {
 		value = (1 / (1 + pow(2.71828, -value)));
 	}
-};
-
-struct data_one {
-	double info[input_size];
-	char rresult;
 };
 
 class network {
@@ -117,14 +113,7 @@ public:
 		for (int i = 1; i < layers; i++)
 			ForwardFeeder(i, 0, size[i]);
 		double max = 0;
-		double prediction = 0;
-		for (int i = 0; i < size[layers - 1]; i++) {
-
-			if (neurons[layers - 1][i].value > max) {
-				max = neurons[layers - 1][i].value;
-				prediction = i;
-			}
-		}
+		int prediction = round(neurons[layers - 1][0].value);
 		return prediction;
 	}
 	void show_res() {
@@ -133,7 +122,7 @@ public:
 		cout << '\n';
 	}
 
-	void BackPropogation(double prediction, double rresult, double lr) {
+	void BackPropogation(int prediction, int rresult, double lr) {
 		for (int i = layers - 1; i > 0; i--)
 			ErrorCounter(i, 0, size[i], prediction, rresult, lr);
 		//thread th1([&]() {ErrorCounter(i, 0, size[i], prediction, rresult, lr);});

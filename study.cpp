@@ -3,11 +3,24 @@
 
 using namespace std;
 
+void input(vector<string>& st, string open) {
+	ifstream fin;
+	fin.open(open);
+
+	string str;
+
+	while (getline(fin, str))
+		st.push_back(str);
+}
+
 int main() {
 	srand(time(NULL));
-	ifstream fin;
 	ofstream fout;
+	ifstream fin;
+
 	fout.open("log.txt");
+
+	const string first = "first", second = "second", res = "res";
 
 	const int l = 3, n = 100;
 	double ra = 0;
@@ -15,8 +28,27 @@ int main() {
 	int size[l] = { input_size, 10, 1};
 	network nn;
 
-	for (int e = 1; ra / n * 100 < 98; e++) {
+	vector<string> st1, st2;
+	
+	double* linput = new double[input_size];
+
+	int right_res;
+	for (int e = 1; ra / n * 100 < 99; e++) {
 		fout << "Epoch " << e << '\n';
-			
+
+		ra = 0;
+		for (int i = 1; i <= n; i++) {
+			string suf = to_string(i) + ".txt";
+			input(st1, first + suf);
+			input(st2, second + suf);
+			fin.open(res + suf);
+			fin >> right_res;
+
+			vector<double> p1 = get_char_percent(st1);
+			vector<double> p2 = get_char_percent(st2);
+
+			for (int j = 0; j < size1; j++)
+				linput[j] = abs(p1[j] - p2[j]);
+		}
 	}
 }
