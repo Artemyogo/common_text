@@ -57,6 +57,28 @@ int main() {
 			nn.set_input(linput);
 
 			int result = nn.ForwardFeed();
+
+			if(result == right_res) {
+				fout << "Guess " << i << "\t\t\t****\n";
+				ra++;
+			}
+			else {
+				double BP_start = clock();
+				nn.BackPropogation(result, rresult, 0.5);
+				double BP_stop = clock();
+			}
 		}
+		cout << e << ") Right answers: " << ra / n * 100 << "%\nMax RA: " << double(maxra) / n * 100 << "(epoch " << maxraepoch << " )" << '\n';//выводим процент правильных ответов
+		time = 0;
+		if (ra > maxra) {
+			maxra = ra;
+			maxraepoch = e;
+		}
+		if (maxraepoch < e - 250) {
+			maxra = 0;
+		}
+	}
+	if (nn.SaveWeights("weights.txt")) {//сохраняем веса
+		cout << "Weights saved!\n";
 	}
 }
