@@ -49,6 +49,14 @@ int main() {
 
 			for (int j = 0; j < size1; j++)
 				linput[j] = abs(p1[j] - p2[j]);
+
+			linput[input_size] = abs(get_avg_len_of_words(st1) - get_avg_len_of_words(st2))/20.;
+			linput[input_size + 1] = abs(get_avg_len_of_sentences(st1) - get_avg_len_of_sentences(st2)) / 1000.;
+			linput[input_size + 2] = abs(get_avg_len_of_pharagraphs(st1) - get_avg_len_of_pharagraphs(st2)) / 100000.;
+
+			nn.set_input(linput);
+
+			int result = nn.ForwardFeed();
 		}
 	}
 }

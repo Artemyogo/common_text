@@ -1,6 +1,9 @@
 ﻿  study.cpp
-C:\Users\tioma\source\repos\common_text\neurons.h(42,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\tioma\source\repos\common_text\neurons.h(63,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\tioma\source\repos\common_text\neurons.h(208,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\tioma\source\repos\common_text\study.cpp(7,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  common text.vcxproj -> C:\Users\tioma\Source\Repos\common_text\x64\Debug\common text.exe
+C:\Users\tioma\source\repos\common_text\neurons.h(38,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\tioma\source\repos\common_text\neurons.h(59,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\tioma\source\repos\common_text\neurons.h(116,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\tioma\source\repos\common_text\neurons.h(197,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\tioma\source\repos\common_text\study.cpp(17,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\tioma\source\repos\common_text\study.cpp(29,10): warning C4101: 'nn': unreferenced local variable
+study.obj : error LNK2019: unresolved external symbol "class std::vector<double,class std::allocator<double> > __cdecl get_char_percent(class std::vector<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > const &)" (?get_char_percent@@YA?AV?$vector@NV?$allocator@N@std@@@std@@AEBV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@@Z) referenced in function main
+C:\Users\tioma\Source\Repos\common_text\x64\Debug\common text.exe : fatal error LNK1120: 1 unresolved externals
