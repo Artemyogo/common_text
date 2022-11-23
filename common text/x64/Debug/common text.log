@@ -1,0 +1,6 @@
+﻿  study.cpp
+C:\Users\tioma\source\repos\common_text\neurons.h(42,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\tioma\source\repos\common_text\neurons.h(63,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\tioma\source\repos\common_text\neurons.h(208,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\tioma\source\repos\common_text\study.cpp(7,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  common text.vcxproj -> C:\Users\tioma\Source\Repos\common_text\x64\Debug\common text.exe

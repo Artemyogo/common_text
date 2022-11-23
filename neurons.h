@@ -9,7 +9,7 @@
 
 using namespace std;
 
-const int ipnut_size = 64;
+const int input_size = 64;
 
 struct neuron {
 	double value;
@@ -20,7 +20,7 @@ struct neuron {
 };
 
 struct data_one {
-	double info[ipnut_size];
+	double info[input_size];
 	char rresult;
 };
 
