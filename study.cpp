@@ -1,8 +1,11 @@
 #include "factors.h"
 #include "neurons.h"
 #include "study.h"
+#include "setting.h"
 
 using namespace std;
+
+
 
 void input(vector<string>& st, string open) {
 	ifstream fin;
@@ -14,6 +17,22 @@ void input(vector<string>& st, string open) {
 		st.push_back(str);
 }
 
+double* create_input(vector<string>& st1, vector<string>& st2) {
+	double* linput = new double[input_size];
+
+	vector<double> p1 = get_char_percent(st1);
+	vector<double> p2 = get_char_percent(st2);
+
+	for (int j = 0; j < size1; j++)
+		linput[j] = abs(p1[j] - p2[j]);
+
+	linput[input_size] = abs(get_avg_len_of_words(st1) - get_avg_len_of_words(st2)) / 20.;
+	linput[input_size + 1] = abs(get_avg_len_of_sentences(st1) - get_avg_len_of_sentences(st2)) / 1000.;
+	linput[input_size + 2] = abs(get_avg_len_of_pharagraphs(st1) - get_avg_len_of_pharagraphs(st2)) / 100000.;
+
+	return linput;
+}
+
 void study() {
 	srand(time(NULL));
 	ofstream fout;
@@ -22,12 +41,12 @@ void study() {
 	fout.open("log.txt");
 
 	const string first = "first", second = "second", res = "res";
-
-	const int l = 3, n = 100;
+	const int n = 100;
 	double ra = 0;
 
-	int size[l] = { input_size, 10, 1};
 	network nn;
+
+	nn.setLayers(l, sizes);
 
 	vector<string> st1, st2;
 	
@@ -45,41 +64,25 @@ void study() {
 			fin.open(res + suf);
 			fin >> right_res;
 
-			vector<double> p1 = get_char_percent(st1);
-			vector<double> p2 = get_char_percent(st2);
-
-			for (int j = 0; j < size1; j++)
-				linput[j] = abs(p1[j] - p2[j]);
-
-			linput[input_size] = abs(get_avg_len_of_words(st1) - get_avg_len_of_words(st2))/20.;
-			linput[input_size + 1] = abs(get_avg_len_of_sentences(st1) - get_avg_len_of_sentences(st2)) / 1000.;
-			linput[input_size + 2] = abs(get_avg_len_of_pharagraphs(st1) - get_avg_len_of_pharagraphs(st2)) / 100000.;
+			linput = create_input(st1, st2);
 
 			nn.set_input(linput);
 
 			int result = nn.ForwardFeed();
 
-			if(result == right_res) {
+			if (result == right_res) {
 				fout << "Guess " << i << "\t\t\t****\n";
 				ra++;
 			}
 			else {
 				double BP_start = clock();
-				nn.BackPropogation(result, rresult, 0.5);
+				nn.BackPropogation(result, right_res, 0.5);
 				double BP_stop = clock();
 			}
 		}
-		cout << e << ") Right answers: " << ra / n * 100 << "%\nMax RA: " << double(maxra) / n * 100 << "(epoch " << maxraepoch << " )" << '\n';//выводим процент правильных ответов
-		time = 0;
-		if (ra > maxra) {
-			maxra = ra;
-			maxraepoch = e;
-		}
-		if (maxraepoch < e - 250) {
-			maxra = 0;
-		}
+		cout << e << ") Right answers: " << ra / n * 100 << '\n';
 	}
-	if (nn.SaveWeights("weights.txt")) {//сохраняем веса
+	if (nn.SaveWeights("weights.txt")) {
 		cout << "Weights saved!\n";
 	}
 }

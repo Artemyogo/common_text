@@ -9,8 +9,6 @@
 
 using namespace std;
 
-const int size1 = 257;
-const int input_size = size1;
 
 struct neuron {
 	double value;
@@ -32,7 +30,7 @@ public:
 			return 0;
 		}
 	}
-	void setLayersNotStudy(int n, int* p) {
+	void setLayersNotStudy(int n, const int* p) {
 		ifstream fin;
 		fin.open("weights.txt");
 		srand(time(NULL));
@@ -55,7 +53,7 @@ public:
 			}
 		}
 	}
-	void setLayers(int n, int* p) {
+	void setLayers(int n, const int p[]) {
 		srand(time(NULL));
 		layers = n;
 		neurons = new neuron * [n];

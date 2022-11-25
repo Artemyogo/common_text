@@ -139,11 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\main.cpp" />
     <ClCompile Include="..\study.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\factors.h" />
     <ClInclude Include="..\neurons.h" />
+    <ClInclude Include="..\study.h" />
+    <ClInclude Include="settings.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\log.txt" />
