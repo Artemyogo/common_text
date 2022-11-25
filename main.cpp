@@ -2,7 +2,6 @@
 #include <vector>
 #include "study.h"
 #include "neurons.h"
-#include "setting.h"
 
 using namespace std;
 

@@ -1,7 +1,6 @@
 #include "factors.h"
 #include "neurons.h"
 #include "study.h"
-#include "setting.h"
 
 using namespace std;
 
