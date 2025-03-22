@@ -1,3 +1,2 @@
 # common_text
-cock
-slave
+Programm for determining author of the text
